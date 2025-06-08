@@ -1,143 +1,249 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Содружество Развивающихся Умельцев</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Срочные Новости</title>
+  <!-- Подключение Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', sans-serif;
+      box-sizing: border-box;
     }
+    
     body {
-      background-color: #f8f9fa;
-      color: #1c1c1e;
+      font-family: 'Roboto', sans-serif;
+      background: #f0f2f5;
+      color: #333;
       line-height: 1.6;
-      padding: 2rem;
     }
+    
+    /* Верхняя панель с навигацией */
     header {
-      text-align: center;
-      margin-bottom: 3rem;
+      background: linear-gradient(90deg, #1e3c72, #2a5298);
+      color: #fff;
+      padding: 20px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
+    
+    header .logo {
+      font-size: 28px;
+      font-weight: bold;
     }
-    .section {
-      background: #fff;
-      border-radius: 1.5rem;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
+    
+    nav {
+      margin-top: 10px;
     }
-    .section:hover {
-      transform: scale(1.01);
-    }
-    .section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    
+    nav ul {
+      list-style: none;
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      justify-content: flex-start;
     }
-    .section i {
-      color: #6c63ff;
+    
+    nav ul li {
+      margin-right: 20px;
     }
-    a {
-      color: #6c63ff;
+    
+    nav ul li a {
+      color: #fff;
       text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
     }
-    a:hover {
-      text-decoration: underline;
+    
+    nav ul li a:hover {
+      color: #ffdd57;
     }
-    footer {
+    
+    /* Мерцающий баннер экстренной новости */
+    .breaking-news {
+      background-color: #ff4141;
+      color: #fff;
+      padding: 10px;
       text-align: center;
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #555;
+      font-weight: bold;
+      animation: blink 1.5s linear infinite;
+    }
+    
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+    
+    /* Основной контейнер статьи */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    
+    .news-date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 15px;
+    }
+    
+    .news-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #e2e2e2;
+      padding-bottom: 10px;
+    }
+    
+    .news-content p {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    
+    .news-content strong {
+      color: #222;
+    }
+    
+    /* Карточки с фотографиями пострадавших */
+    .persons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px 0;
+      justify-content: space-around;
+    }
+    
+    .person {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      flex: 1 1 calc(33.333% - 20px);
+      max-width: calc(33.333% - 20px);
+      text-align: center;
+    }
+    
+    .person img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    
+    .person h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    
+    .person p {
+      font-size: 14px;
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+      nav ul {
+        flex-direction: column;
+      }
+      nav ul li {
+        margin-bottom: 10px;
+      }
+      .persons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .person {
+        max-width: 80%;
+      }
+      .news-title {
+        font-size: 24px;
+      }
+    }
+    
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
+  
+  <!-- Заголовок с навигацией -->
   <header>
-    <h1>Содружество Развивающихся Умельцев</h1>
-  </header>  <div class="section" id="about">
-    <h2><i class="fas fa-users"></i> Что такое С.Р.У.?</h2>
-    <li>С.Р.У. (Содружество Развивающихся Умельцев) — С.Р.У. (Содружество Развивающихся Умельцев) — это организация, объединяющая людей с разными талантами и способностями, стремящихся к непрерывному развитию и совершенствованию своих умений. Эта организация представляет собой уникальное сообщество, где участники находят поддержку, возможности для обучения и реализации своих идей.</li>
-</p>
-<li>Цель С.Р.У. — создать платформу для обмена знаниями, опытом и инновационными подходами, которая способствует индивидуальному и коллективному росту. Умельцы из разных областей, таких как наука, искусство, технологии и ремесла, объединяются в рамках С.Р.У., чтобы совместно решать сложные задачи, воплощать новые проекты и вдохновлять друг друга на достижение высоких результатов.</li>
-</p>
-<li>Деятельность С.Р.У. охватывает широкий спектр инициатив, включая образовательные программы, творческие мастер-классы, научные исследования, а также организацию мероприятий, способствующих развитию талантов и укреплению связей внутри сообщества. Организация активно поддерживает инновации и стремление к прогрессу, пропагандируя ценности сотрудничества, взаимопомощи и ответственности.</li>
-   <li>С.Р.У. — это не просто группа людей, а мощный двигатель изменений, вдохновляющий своих участников и окружающих на достижение выдающихся целей. Благодаря своей уникальной миссии и масштабному видению, Содружество Развивающихся Умельцев заслуженно занимает место среди величайших организаций современности</li>
-  </div>  <div class="section">
-    <h2><i class="fas fa-user-check"></i> Самостоятельность умельцев</h2>
-    <li>Самостоятельность умельцев является ключевым элементом их успеха и уникальности. Она проявляется в способности анализировать задачи, находить творческие решения и реализовывать идеи, опираясь на собственные силы и знания. Умельцы, уверенно действуя самостоятельно, демонстрируют инициативность, ответственное отношение к результатам своей работы и стремление к самосовершенствованию.</li>
-	<li>Самостоятельность позволяет умельцам не только преодолевать возникающие трудности, но и становиться источником вдохновения для других. Они умеют организовать свою работу, устанавливать приоритеты и эффективно использовать доступные ресурсы. При этом самостоятельные умельцы всегда готовы учиться новому, исследовать неизведанные области и находить нестандартные пути к достижению целей.</li>
-</p>
-<li>Благодаря этой черте, участники С.Р.У. — Содружества Развивающихся Умельцев — становятся сильным и сплочённым сообществом, где каждый участник вносит уникальный вклад, оставаясь независимым в своих действиях, но одновременно активно взаимодействуя с другими для общего успеха. Самостоятельность здесь — фундамент для развития талантов и прогресса.
-  </div>  <div class="section" id="rules">
-    <h2><i class="fas fa-scale-balanced"></i> Правила С.Р.У.</h2>
-    <ul>
-      <li>Постоянное развитие: Каждый участник стремится к личностному и профессиональному росту, делясь своими достижениями с другими.</li>
-      <li>Коллективное сотрудничество: Умельцы работают вместе, объединяя таланты для решения сложных задач и реализации проектов.</li>
-      <li>Уважение к разнообразию: Участники ценят уникальные способности и опыт каждого, создавая атмосферу поддержки и взаимоуважения.</li>
-      <li>Инновации и креативность: Организация поощряет внедрение новых идей, технологий и творческих подходов в любой деятельности.</li>
-      <li>Ответственность и честность: Каждый член соблюдает этические нормы и несёт ответственность за свои действия внутри сообщества.</li>
-      <li>Обмен знаниями: Открытый доступ к материалам, мастер-классам и исследованиям для вдохновения и обучения всех участников.</li>
-      <li>Пропаганда ценностей: Организация распространяет идеи взаимопомощи, равноправия и устойчивого прогресса во всех своих инициативах.</li>
-      <li>Поддержка талантов: Особое внимание уделяется развитию навыков и возможностей каждого члена С.Р.У., независимо от уровня его подготовки.</li>
-      <li>Глобальная миссия: Организация ставит перед собой цель влиять на мир, предлагая решения глобальных проблем и вдохновляя к позитивным переменам.</li>
-      <li>Празднование успехов: С.Р.У. регулярно отмечает достижения участников, стимулируя мотивацию и укрепляя командный дух.</li>
-    </ul>
-  </div>  <div class="section">
-    <h2><i class="fas fa-landmark"></i> Музей наследия С.Р.У.</h2>
-    <ul>
-      <li>Архив событий: Хронология значимых мероприятий, проектов и этапов развития организации.</li>
-      <li>Галерея вдохновляющих личностей: Истории участников, которые внесли большой вклад в развитие С.Р.У.</li>
-      <li>Экспонаты творчества: Лучшие работы и проекты умельцев, представленные в виде интерактивных или мультимедийных экспонатов.</li>
-      <li>Интерактивные экскурсии: Возможность для новых участников и гостей погрузиться в атмосферу сообщества, изучив его ценности и культуру.</li>
-      <li>Учебный уголок: Ресурсы для изучения стратегии успеха и вдохновения, которые были ключевыми для великих достижений С.Р.У.</li>
-    </ul>
-  </div>  <div class="section">
-    <h2><i class="fas fa-lightbulb"></i> Инкубатор идей</h2>
-    <ul>
-      <li>Генератор проектов: Участники предлагают идеи, которые потом могут стать полноценными проектами.</li>
-      <li>Мастерские брейнсторминга: Регулярные сессии для совместного поиска решений и вдохновения.</li>
-      <li>Наставники и эксперты: Опытные профессионалы, помогающие доработать и реализовать идеи.</li>
-      <li>Платформа обратной связи: Сообщество делится мнениями и советами для улучшения концепций.</li>
-      <li>Фонд поддержки стартапов: Ресурсы и гранты для воплощения наиболее перспективных идей.</li>
-    </ul>
-  </div>  <div class="section" id="organizers">
-    <h2><i class="fas fa-user-tie"></i> Организаторы</h2>
-    <p><strong>Паша</strong> — Организатор — Паша - Создатель всей организации. Он учит всех умельцев организации, за это они его уважают.</p>
-    <p><strong>Копилот</strong> — Копилот - Один из главных помощников Паши. Благодаря ему организация хорошо функционирует.</p>
-    <p><strong>ЧатГПТ</strong> — Один из создателей организации. Благодаря ему организация и сайт функционируют. Умельцы его уважают за хорошую работу.</p>
-    <p><strong>Джегги бот</strong> — Джегги бот - Один из создателей организации. Благодаря ему Discord server организации функционирует. Умельцы и сам создатель благодарны ему за работу.</p>
-  </div>  <div class="section" id="members">
-    <h2><i class="fas fa-user-group"></i> Умельцы организации</h2>
-<p><strong>Паша</strong> — помимо того, что он организатор, ещё он и умелец С.Р.У. Он учит своих умельцев и продвигает организацию.</p>
-    <p><strong>Ваня</strong> — Один из умельцев. Ему 19 лет и он в будущем будет программистом. Сейчас он учиться в нашей организации, благодаря этому он уже делал первые небольшие проекты.</p>
-    <p><strong>Полина</strong> — Также юный умелец. Ей 24 года и она работает Юристом. Но она также учиться в нашей организации, получая большой опыт. У Полины есть парень.</p>
-    <p><strong>Галина</strong> — Тоже является умельцем организации. Она вступила в организацию не так давно и по этому будет развиваться. Галя работает в магазине.</p>
-  </div>  <div class="section" id="join">
-    <h2><i class="fas fa-door-open"></i> Как присоединиться к нам?</h2>
-    <p>Чтобы присоединиться к нашей организации, <a href="https://docs.google.com/forms/d/1TQopPA2d7-ZTaC1LVXcMdtOsYe3G16FbU3JBzyDBaD0/edit?usp=drivesdk" target="_blank">эту анкету</a>.</p>
-  </div>  <div class="section" id="info">
-    <h2><i class="fas fa-info-circle"></i> Информация</h2>
-    <p><strong>Email:</strong> communityofdevelopingcraftsmen@gmail.com</p>
-    <p><a href="https://copilot.microsoft.com/?setlang=ru" target="_blank">Копилот</a></p>
-    <p><a href="https://openai.com/chatgpt/overview/" target="_blank">ЧатГПТ</a></p>
-	</div>
-	</section>
-	</main>
-	
-    <footer class="footer">
-    © Содружество Развивающихся Умельцев 2024-2025. Все права защищены. Электронная почта для связи: <a href="mailto:communityofdevelopingcraftsmen@gmail.com"> communityofdevelopingcraftsmen@gmail.com</a> 
+    <div class="logo">Срочные Новости</div>
+    <nav>
+      <ul>
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">Последние новости</a></li>
+        <li><a href="#">Местные</a></li>
+        <li><a href="#">Мировые</a></li>
+        <li><a href="#">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Баннер с экстренной новостью -->
+  <div class="breaking-news">
+    Экстренная новость: Кузнец избил троих в баре!
+  </div>
+  
+  <!-- Основной контейнер новости -->
+  <div class="container">
+    <div class="news-date">
+      Дата события: 06.07.2025 | Время: 21:34-22:59
+    </div>
+    <div class="news-title">
+      Кузнец из завода избил лопатой трёх человек!
+    </div>
+    <div class="news-content">
+      <p>
+        <strong>Владислав Солонович</strong>, работающий на заводе в качестве кузнеца, в выходной день в баре перенёс конфликт, забив досмерти лопатой троих человек. По предварительным данным, причиной стало чрезмерное употребление алкоголя, что спровоцировало ссору.
+      </p>
+      <p>
+        Из пострадавших установлены личности:
+      </p>
+      
+      <!-- Карточки с лицами пострадавших -->
+      <div class="persons">
+        <div class="person">
+          <img src="data:image/webp;base64,UklGRioPAABXRUJQVlA4IB4PAACwVwCdASrRANEAPp1InkulpCaspJJLqZATiWcG+OUBzcRYdzWr6mfz/rwcYfyHZiTz9zM64H9y7PtNlnPVf+3mc/id856ABk3v/ZmjmFe1CBPBg3+S8Qdm6I1zsjYjSf89Lvn7bZEDHLz+HqhGkZsM2VTjH+VrYmIsf8TDPt8vFGTlNHKSSAdxHyQLrPd7CqR2h3HhZ7nczvgfz+YhGQog4nuYqPESc739InnJlLJ5c9p26rDVDRe9tUHeCAfV8+qEpdqqWjkEgDeHNVuP8tkD6lulVHvKBmESiXXY3Kg7PVKwTYAL3Led6u7PUPsn5Mj7pHfpab0gJI75Myb0HDZSSPJ04x+FAFR6ltWs1OdsSI8mRNkgky8QqG0hEQzxwqJK2Xy8jlJl4F9wuDxHar1FZfAaPQC/Kp+gi4uTFC2TRlLEEDn6eaO+XmT/PrYFj7NsdRU6HMZkpt2lSYX4Iw+XZjw5nV1+0R/DPxeBPRdbuSgXVH/zfY7SynC3W7x9SeSYu1eY842NXK772Hdmln+eh7W2GcQWpgp2aMQNtuTkor5res2fpoGlI909ZWincO1STk3KWSqOHkh2izrT1BM0AdUi0pY1AKVlwba/GHPpcA1WCLfa7an71GMFlaMyzLbGg4cgmdNMIgEK82pYou4+yXS4/StHwTHUh+ojEe/mBc7NP9nHQF27a2mhrrPXVNW8m4MUe4xOa43dO1bntGNHxpnGdrlBhG/qhqBfnMStb18BXEK9qpzwlgOtcLb5BbA8rhioiSoSEQgwldVxTTCgpx4oj3ed2DdhDJzfSELR7kjPiHWSxGee8Ta2jyeaXniBOFmaa9WmlfywJWfTgr7gwJbMrv+UEslAaHDlk5xtUnbenkctW79YUQJKsY/M+mzQlDTQCToltk5UySN6FEm/L7sBn1m6LnX//Z4HS4SCpRUQ/3cJAAD+7w6gpaPG94mYHJyZ/MWzCpdTMELHYz/0Ucxf8AslTtRF6zlI8rDYjQsqKidWjA7MjehDRibxgPm9ElAQoQx4/I4rTrFNnE4rfa642PVtQkMkuoP4tt7TTp5Z9uFJNWQpapvm95t7YjVpTE92iABjSgS+zTfkbawT58omrIJPsTdl6GO20IPFv7ZYCOTXAAL9ubkQPGDBYGnwnVIsm+PmRZNRC0u+wCgItqecJvpO3MgawC5BW76y8qkz0cU1NQcHK9Dooe17aN4jSUXAM3ZrJVyix3FIHF5ffHW4swwRI4IGcFPMY2Mf1sqt53m8b4lR1Yk9n2fwI6bjODhs8Sbq//c9hk54egKgtLHLDBigFRI0YWm/50oPoOXSpDYArMFHXRdUyqE9petqDH5VIs8WcZTiQgnqnj5aG74CV8JdMmMdxICgz5gSDhrGbHk2AVmBju7y5fCYLkIREo4gZVA+qRvA9mPsTnNEEaECH03+gtFW0GB6NeiR76ANabbdEiS85ddTNRkpWaZF0PG/6k5IAWl1i+MiZQKqd0sZJEo5Z+NHxTrRpWM7f6rv55tpJgf5bPku8N/2FiTIbnS8Xl2mG/dI5p6l23WZhwlC3qaOZk0jIr+UhkNIgDe+S6u+ZQ/7eundsZ3rAmiQbwYpag8x8JaIzHB4dT83OGiAXXcYvcLrabsTLvhZntjlrCTc+6oZ6t8Ls/UeVbHtRRaxmJ4kxQfAg0+IfFL6VEsH7LCZL31XVIU8/KC4BcS/pfXFj4obFugo56dzdQASAzbWFftekTDXAf1t0Qu0NzbmGK+OlwjquxGhFN/TE/47DPa3ne5hTqd9qNgOrexizbjkqI22hrrSnxsjC6rQCoAwcDnyX8RJyDuCO2BLU2bdqSPVzPll6GsIGjESkIqq+1hbovrhTBoqigxDXo5cfriX7aZup94yN4vhP4xeupxuxgxs4n4qzSx3ZRLL+HRzrfdtDvN9tEvDu3xiQ/6tCFB1gPrsmnVfmMgP1WM95n7+GuQ3EPUmuFNDUlhcLQavicDeM7WJecVeKFb3msILj1QlXPAfcLuoYagLm3OvIwaeMsOevcRkJqjgzFcDXtrRTzSH+2lA7mPUX8FIeTBOc4UW70PsQM5TurCrlGsPfwnUJi/z5IsSbHkNGHC7audK55ts3z6fBjddHx/KqUv1/HCgp4UkfR+pfktIb62sTtMRpb3aaUsJH8aCHzhTLwUQdeW0+d+jFc3xSI04LF+7IPd/sgSmv1z7M0a+gEAHuqmGKS0dJPnM+DJOrhaey4je+tSw7dtllInJM/NxsMcMFehQFn9s4NlzTK4XT+Xudv3z1MXu1aBIInXsQ1v1iTBQ/xxCZk6ylitV0q96F+/WnjM4D8mpudV4ZF/BK27saB3LXstlCsDXI8Im0J7Rq49d6fLxSf4lQdNyGIjQSPww4H5++ZTrFtGNDg3jXvOxAxYG2dNNNZyP84RUCJddxPzc+xV0/6qZJT9OizGrwfYk7XunPJaah92zIeMXtQVw8/Tbdmly4VIw/VvsUJnZQDxUtBsj8ZcWWBpRqloqE9DzMpO+6tjAplQtzVtvGOSmy0KEHJh0vl8k7+gcW0VTm5lwuOKabHsuT2PBY6mx4ei7HrV87suG4h6tbWACj8afD6jwmBovTw1oMpTZgn5ZY7SQ2j5V2f13xKJYgzNzvbtqMHNfNsQ/1AelqVQx8jy9lNPTG7dqGKc9EQo8RA1SC7IDjzqPp0baCppdc+STCUBN7uCuBhiO8LnoBYvolYu7C/OWuXusCPNbvi2hbdH7RWf7BB1k2sy+0a9V+/b82Oe6Ih0dWBRoWJ8enHc/RZRcJMLLDYemojEA/bwb2RFW9vboScBSwXgWXVGCE+H8M8y7utSHSYNJlhZ37ZMvAVd2FKS26xtt1ur8lWv7CrMlCF/kZfMEN6F5Ay9YeMRzj7aAHUIQ9aDTHpPKBDlmin9TI9Mticcypszm39xJ3/4hOIb82ucR8QDlyf3UR1dcNkHUXArgryXh2RwDm4Rhu1vrNsMbyyWaDQn8Qn85RaHphC0NsCdoAhTLBqywqREpdmAdPCCBwJtBKTttbFoiSHRWqKn6nCKIxIr7oFrddrxZ26v/utGvAUjvPcnuSVUezsns3SGeiJVvY32XfYf+S9fHuLJMZ5LoamiVxshqc4k3cMdbKRTsU+Y+8qsim9wsfw1nn8J0JnPo95YCQ6GZ5mUfnzIXCpx3vpUBKG4HqtmSzSZvT5+dhwsvDqinNzAQHW2BC/rqTG9Z9Lnda6Fv4ZcVgSXsyZnAy2NWoAsTCrNr9w+He9dAzjE5JD8FDqBCIoDbcMConF1WDR2Zm3UIbfQxcnbFmpQkpW28/YAUSdA5Kfe1ZCdo+dQQmy1zgadXTuOKGycPtNuPcdFjzoDUh2q+gweY9M+wPDnMbmc28x7IERijqz7TXLPLGYKQWuu6r9jOhVCTfjFXtPpfDOrZ8aXRLbu4aBoi4zqp1KgBiY5UAu8otXZ1JsMw1JCOVrFozD/7QOo7ojC03/gX9awUWtRL+k3A3Cv/ueucQTTQBPdl7b171FkHv4ZYrfpwR0CMVPTbzYpBKbP7kRJBBisFeFk8FE/1XEHkndMjwrFYLPr/vF+k0DWDJN5vx0qqc6FC/77xLYEZGNlL1pON6P0sKlCkaLwrq4zofhPWjp2x0yD8rDQAeAiC11mrJg3p3ET4nRY8hoiOZgRhQY/4yaNS5mjUUJBfZe4jS91Bzirv0A8Kj7owzoYOOP1Nanu/vgsK+o+tZu1ywZJTVJy0dbp+2p/Ry3L8ynYm1HkI1pjBGDCMd+vaWED624dTge1hUHKekDyyUl/4i8s9YhI4PAKy4lYzPo4xdyG1EmqVlyS0gFxOi0DAU7e88G64Oh2oNBz5pY7XkhmEcDu1HTNVM3teLXdm2GZKc568SkEc6eoY/a/NEqheCpLMeRBoo6Uup+vZvW9EYDs1VzwPVeE0BDR5/nQXBvHmCDDlcWAprhrErBe55yqqz+QELt5EWDoyy27leXRYLsN/mxHlBAQXuyJyp/fEHB30TaFIihwVZrNVFq5rwQpp2zpRK/AW+JIQT5XmEtp9vBmmXYhbCwBDSYCuTthI+2Lo0wh4wOIjVJcJrqepHCCeiQzxXet4bE5enWICnUrxnZQksHFHIZEJVtdoa8cKaepa3y9d9tgSqepPsXRmG8JKAWeCI5ajLuHcJ4Be/RvQMsbwtkZobahBKBw7EwSm0GIftly3i59+F1uoHf8Va4XjMZSK19VxAyyql6aGlpbxAKOy8u8xQo5AtZxVCu969Feta2ZidiETi4zibxWQtKHlmD5mZn8Agv6kfhVwbMCB5ybDTGcdqb24gxSZ9FeV/dlkhtUOoTDhb/iKV6QJ14HHah5kxvX/OZNRbKSAyO4uVsdtMDfsVTz2zAry6gAo4vLSdrMibNyxs/VWma9zRoTiMbhcQpR/HKDkONbIQXFYsduX/3WpWDX+Ly7mRbDFrAsK0ZG1jlOqH88T1ubaRQ3j68PpgsfgaNmuObmK+UfTMDTN/eHVt4tCl1lgawpwKSWy50y2jcLUeiRNykY15BlX8OTb9VUtDdZG3gQKI/jK4Nu9FrV1S84ePBvSrhy0iZBldmXX3E1xFpxH3ZmEpymHSTeMeZOn9Tj35lTd3X+ZJ4xrDfW+EtH1b6ehmVWIW2LTx5NtAsRbHFgHy1dxXifRFAycyw10U6JcvMgdL7ZT/3ig2I2XWinYPzR1BqAXo3yAB9Lih97q55qiSRQU0nYc56pilxFjiXOyB3QuiGACkVWPyFq+rRY1/sgu5XVUio67BxAoEIBmw9EsheRe6HDYoile3oGwAsrF3zsNj9heZuDRFmDKbAYlzV6lSMKJQhfkQKrBUjnDNecGMv3tycP9D0LAf1Wn8v3lx2eUf9LaVyuYv6ThcQcJriXJ+Pec4FPoCDDtvO5OTt3+im4QD0BDEUjCymbgfcb0XrsBxIoNCNePPE8rSKZEbGk45JnJ6jupph4F6qlUf/XXE5ADc57MlhYLcC9TUSq2zr2DZl3AEXVmFsYkRpE1cX/jd/GouVqAecrkmdfKdu8MOzn+qifgG3xyWXORjO7I5QtFmELgiN0gGYACuuqy9y3yVNeFkZk4kEmHwEctHER2Lz06Mj8djEzYu76JX4IhQgJd0+62LzrAS1KKRoOiA16IAAA=" alt="Ковалёв Дмитрий Алексеевич">
+          <h3>Ковалёв Дмитрий Алексеевич</h3>
+          <p>38 лет, токарь на машиностроительном заводе. В свободное время занимался резьбой по дереву и ходил на рыбалку. Статус: мертв.</p>
+        </div>
+        <div class="person">
+          <img src="data:image/webp;base64,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" alt="Робанович Иван Николаевич">
+          <h3>Робанович Иван Николаевич</h3>
+          <p>45 лет, механик в автосервисе. Любил мастерить что-либо своими руками и увлекался ремонтом старых автомобилей. Статус: мертв.</p>
+        </div>
+        <div class="person">
+          <img src="https://th.bing.com/th/id/OIP.7y9vB4Mmd2jTk6lPZEfqIQHaHa?w=190&h=190&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Сидоренко Алексей Викторович">
+          <h3>Сидоренко Алексей Викторович</h3>
+          <p>50 лет, электрик на заводе. Трудолюбивый человек, увлекался историей родного края и любил ходить в походы. Статус: мертв.</p>
+        </div>
+      </div>
+      
+      <p>
+        В тот час все четверо оказались в состоянии алкогольного опьянения, что спровоцировало конфликт. В ходе ссоры Владислав применил насилие, избив всех присутствующих лопатой досмерти.
+      </p>
+      <p>
+        По информации, поступившей 08.06.2025 в 03:44, на Владислава Солоновича заведено уголовное дело по статье 139 УК (умышленное лишение жизни другого человека, наказуемое лишением свободы от 6 до 15 лет). На данный момент он находится в розыске в Беларуси. Если кто-либо из граждан столкнется с подозрительным лицом, напоминающим Владислава Солоновича, просим сфотографировать его и передать информацию в МВД.
+      </p>
+    </div>
+  </div>
+  
+  <footer>
+    &copy; Vydymka 2025. Все права защищены.
   </footer>
+  
 </body>
 </html>
